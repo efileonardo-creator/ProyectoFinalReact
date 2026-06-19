@@ -10,7 +10,7 @@ function App() {
     <>
         <Layout>
             
-            <h1>Hola Mundo</h1>
+            <h1 className="text-2xl text-green-500 font-bold">Hola Mundo</h1>
         </Layout>
     </>
     )
