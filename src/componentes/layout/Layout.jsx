@@ -4,7 +4,7 @@ import ItemListContainer from '../item/ItemListContainer.jsx';
 
 export function Layout({ children }) {
     return (
-        <div>
+        <div class="flex flex-col items-center bg-gray-100 min-h-screen">
             <Header />
             {children}
             <ItemListContainer />

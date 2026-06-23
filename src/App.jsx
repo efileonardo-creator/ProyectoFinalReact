@@ -9,8 +9,7 @@ function App() {
   return (
     <>
         <Layout>
-            
-            <h1 className="text-2xl text-green-500 font-bold">Hola Mundo</h1>
+            <h1 className="text-2xl text-green-500 font-bold">Bienvenido a mi tienda online</h1>
         </Layout>
     </>
     )

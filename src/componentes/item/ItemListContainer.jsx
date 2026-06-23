@@ -7,7 +7,7 @@ export default function ItemListContainer() {
         { id: '2545', nombre: 'Teclado Mecánico', precio: 15000, stock: 50 },];
     return (
         <div>
-            <h2>Lista de Productos</h2>
+            <h2 className='flex justify-center'>Lista de Productos</h2>
             <ItemList productos={productos} />
         </div>
     );

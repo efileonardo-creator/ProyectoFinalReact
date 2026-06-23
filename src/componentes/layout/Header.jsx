@@ -1,7 +1,7 @@
 function Header() {
     return (
-        <header>
-            <h1>Bienvenidos a la Lista de Asistentes</h1>
+        <header className="header bg-gray-800 text-white p-4 text-center">
+            <h1>Bienvenidos a Mi tienda online</h1>
         </header>
     );
 }
