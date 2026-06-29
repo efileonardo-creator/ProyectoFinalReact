@@ -1,6 +1,6 @@
 function Header() {
     return (
-        <header className="header bg-gray-800 text-white p-4 text-center">
+        <header className="header bg-gray-800 text-white p-4 w-full text-center">
             <h1>Bienvenidos a Mi tienda online</h1>
         </header>
     );
