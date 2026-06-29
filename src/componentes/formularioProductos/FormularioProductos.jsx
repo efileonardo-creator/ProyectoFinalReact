@@ -15,28 +15,37 @@ return (
         <h3>Agregar Nuevo Producto</h3>
         <div>
             <label>Nombre del Producto:</label>
-            <input type="text" 
+            <input 
+            type="text" 
+            name="nombre"
             placeholder=" Ej: Teclado Mecánico" 
             value={datosForm.nombre} 
             onChange={manejarCambio} />
         </div>
         <div>
             <label>Precio:</label>
-            <input type="number" 
+            <input 
+            type="number" 
+            name="precio"
             placeholder=" Ej: 95" 
             value={datosForm.precio} 
             onChange={manejarCambio} />
         </div>
         <div>
             <label>Stock:</label>
-            <input type="number" 
+            <input 
+            type="number" 
+            name="stock"
             placeholder=" Ej: 5" 
             value={datosForm.stock} 
             onChange={manejarCambio} />
         </div>
         <div>
             <label>Imagen:</label>
-            <input type="file" placeholder="https://..." />
+            <input 
+            type="file" 
+            name="Imagen"
+            placeholder="https://..." />
         </div>
         <button type="submit">Guardar Producto</button>
     </form>
