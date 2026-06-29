@@ -1,6 +1,7 @@
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import ItemListContainer from '../item/ItemListContainer.jsx';
+import ContenedorListaPersona from '../staff/ContenedorListaPersona.jsx';
 
 export function Layout({ children }) {
     return (
@@ -8,6 +9,7 @@ export function Layout({ children }) {
             <Header />
             {children}
             <ItemListContainer />
+            <ContenedorListaPersona />
             <Footer />
         </div>
     );
