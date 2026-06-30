@@ -1,7 +1,7 @@
 import ItemList from './ItemList.jsx';
 import { useState, useEffect } from 'react';
 
-export default function ItemListContainer() {
+export function ItemListContainer() {
 
     const [productos, setProductos] = useState([]);
     useEffect(() => {

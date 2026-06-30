@@ -1,7 +1,7 @@
 import ListaPersona from './ListaPersona.jsx';
 import { useState, useEffect } from 'react';
 
-export default function ContenedorListaPersona() {
+export function ContenedorListaPersona() {
 
     const [persona, setPersona] = useState([]);
     useEffect(() => {
