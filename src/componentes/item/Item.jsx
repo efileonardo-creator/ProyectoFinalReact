@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import MarcarComoFavorito from '../marcarComoFavorito/MarcarComoFavorito.jsx';
+import { useCart } from '../../context/CarritoContext.jsx';
 
 export default function Item({ id,nombre, precio, stock, imagen }) {
     const [cantidad, setCantidad] = useState(0);
@@ -15,7 +16,10 @@ export default function Item({ id,nombre, precio, stock, imagen }) {
             setCantidad(cantidad - 1);
         }
     };
-    const agregarAlCarrito = () => {
+    const { agregarAlCarrito } = useCart();
+    
+    const agregarItemAlCarrito = () => {
+        agregarAlCarrito({ id, nombre, precio }, cantidad);
         alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
     }
     return (
@@ -30,7 +34,7 @@ export default function Item({ id,nombre, precio, stock, imagen }) {
                     <p style={{ margin: '0 10px' }}>{cantidad}</p>
                     <button onClick={incrementar}>+</button>
                 </div>
-            <button onClick={agregarAlCarrito}>Agregar al Carrito</button>
+            <button onClick={agregarItemAlCarrito}>Agregar al Carrito</button>
             <MarcarComoFavorito />
         </div>
     );
