@@ -1,8 +1,9 @@
 // En /componentes/Item/Item.jsx
 import { useState } from 'react';
+import {Link} from 'react-router-dom';
 import MarcarComoFavorito from '../marcarComoFavorito/MarcarComoFavorito.jsx';
 
-export default function Item({ nombre, precio, stock, imagen }) {
+export default function Item({ id,nombre, precio, stock, imagen }) {
     const [cantidad, setCantidad] = useState(0);
     const incrementar = () => {
         if (cantidad < stock) {
@@ -20,7 +21,7 @@ export default function Item({ nombre, precio, stock, imagen }) {
     return (
         <div className='flex flex-col items-center border p-4 m-2'>
             <h3>{nombre}</h3>
-            <img src={imagen} alt={nombre} className='w-32 h-32 object-cover' />
+            <Link to={`/productos/${id}`}><img src={imagen} alt={nombre} className='w-32 h-32 object-cover' /></Link>
             <p>Precio: ${precio}</p>
             <p>Stock disponible: {stock}</p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent:

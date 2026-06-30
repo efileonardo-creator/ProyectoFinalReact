@@ -1,5 +1,5 @@
 
-export function FormularioProductos({datosForm, manejarCambio, manejarEnvio}) {
+export function FormularioProductos({datosForm, manejarCambio, manejarEnvio, manejarCambioImagen}) {
 const formStyle = {
 display: 'flex',
 flexDirection: 'column',
@@ -45,9 +45,12 @@ return (
             <input 
             type="file" 
             name="Imagen"
-            placeholder="https://..." />
+            placeholder="https://api.imgbb.com/1/upload"
+            value={datosForm.urlImagen} 
+            onChange={manejarCambioImagen}
+            />
         </div>
-        <button type="submit">Guardar Producto</button>
+        <button type="submit" className="bc p-2">Guardar Producto</button>
     </form>
     );
 }
