@@ -25,9 +25,7 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 11 # Usa la versión 11 de pnpm que tienes instalada
-
+ 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
