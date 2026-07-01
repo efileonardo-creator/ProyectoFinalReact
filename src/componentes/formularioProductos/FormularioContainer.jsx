@@ -5,8 +5,7 @@ export function FormularioContainer() {
     const [datosForm, setDatosForm] = useState({
         nombre: '',
         precio: '',
-        stock: '',
-        urlImagen: ''
+        stock: ''
     });
     const [imagenFile, setImagenFile] = useState(null);
     
@@ -38,12 +37,13 @@ export function FormularioContainer() {
             });
             const datosImgbb = await response.json();
             console.log('Imagen subida:', datosImgbb);
+            const urlImagen = datosImgbb.data.url;
             if (datosImgbb.success) {
                 console.log('Imagen lista!');
             // Aca se puede procesar los datos según las necesidades.
                 const productoCompleto = {
                     ...datosForm,
-                    urlImagen: datosImgbb.data.url
+                    urlImagen: urlImagen
                 };
                 console.log('Producto completo:', productoCompleto);
             } else {
