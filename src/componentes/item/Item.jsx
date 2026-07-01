@@ -34,7 +34,7 @@ export default function Item({ id,nombre, precio, stock, imagen }) {
                     <p style={{ margin: '0 10px' }}>{cantidad}</p>
                     <button onClick={incrementar}>+</button>
                 </div>
-            <button onClick={agregarItemAlCarrito}>Agregar al Carrito</button>
+            <button onClick={agregarItemAlCarrito}>Agregar {cantidad} al Carrito</button>
             <MarcarComoFavorito />
         </div>
     );
