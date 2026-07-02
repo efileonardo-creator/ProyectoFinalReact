@@ -5,7 +5,12 @@ import MarcarComoFavorito from '../marcarComoFavorito/MarcarComoFavorito.jsx';
 import { useCart } from '../hooks/CarritoHook.jsx'; // Importamos el hook useCart desde la ruta correcta
 
 export default function Item({ id,nombre, precio, stock, imagen }) {
+    const producto = { id, nombre, precio, stock, imagen };
     const [cantidad, setCantidad] = useState(0);
+    const { agregarAlCarrito, getCantidadActual } = useCart();
+    
+// Obtenemos la cantidad YA existente en el carrito desde el contexto
+    const cantidadActual = getCantidadActual(producto.id);
     const incrementar = () => {
         if (cantidad < stock) {
             setCantidad(cantidad + 1);
@@ -16,7 +21,6 @@ export default function Item({ id,nombre, precio, stock, imagen }) {
             setCantidad(cantidad - 1);
         }
     };
-    const { agregarAlCarrito } = useCart();
     
     const agregarItemAlCarrito = () => {
         agregarAlCarrito({ id, nombre, precio }, cantidad);
@@ -31,7 +35,7 @@ export default function Item({ id,nombre, precio, stock, imagen }) {
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent:
                     'center', margin: '10px 0' }}>
                     <button onClick={decrementar}>-</button>
-                    <p style={{ margin: '0 10px' }}>{cantidad}</p>
+                    <p style={{ margin: '0 10px' }}>{cantidadActual}</p>
                     <button onClick={incrementar}>+</button>
                 </div>
             <button onClick={agregarItemAlCarrito}>Agregar {cantidad} al Carrito</button>
