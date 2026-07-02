@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 const Carrito = () => {
 // 2. Obtenemos el estado 'carrito' y las funciones que necesitemos del contexto
-const { carrito, clearCart, getCartTotal, removeItem, isInCart } = useCart();
+const { carrito, clearCart, getCartTotal, removeItem } = useCart();
 // Si el carrito está vacío, mostramos un mensaje
 if (carrito.length === 0) {
     return (
