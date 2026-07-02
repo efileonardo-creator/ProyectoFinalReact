@@ -1,4 +1,4 @@
-import { useCart } from '../../context/CarritoContext.jsx';
+import { useCart } from "../hooks/CarritoHook.jsx";
  // 1. Importamos el hook
 
 const Carrito = () => {

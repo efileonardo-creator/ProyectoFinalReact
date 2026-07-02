@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import { useCart } from "../../context/CarritoContext"; 
+import { useCart } from "../hooks/CarritoHook.jsx"; 
 
 
 function Header() {

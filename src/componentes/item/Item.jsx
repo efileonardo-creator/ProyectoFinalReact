@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import MarcarComoFavorito from '../marcarComoFavorito/MarcarComoFavorito.jsx';
-import { useCart } from '../../context/CarritoContext.jsx';
+import { useCart } from '../hooks/CarritoHook.jsx'; // Importamos el hook useCart desde la ruta correcta
 
 export default function Item({ id,nombre, precio, stock, imagen }) {
     const [cantidad, setCantidad] = useState(0);
