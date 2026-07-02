@@ -4,49 +4,49 @@
     "nombre": "Camara Instantánea",
     "precio": 85000,
     "stock":22,
-    "imagen": "/images/CamaraInstantanea.png"
+    "imagen": "https://i.ibb.co/MxWfbHFv/Camara-Instantanea.png"
     },
     {
     "id": 2,
     "nombre": "Camara Nikon",
     "precio": 97500,
     "stock":2,
-    "imagen": "/images/CamaraNikon.webp"
+    "imagen": "https://i.ibb.co/Kx7GFbM0/Camara-Nikon.webp"
     },
     {"id": 3,
     "nombre": "Monitor Asus",
     "precio": 130000,
     "stock":2,
-    "imagen": "/images/MonitorAsus.jpg"
+    "imagen": "https://i.ibb.co/ynGd1jdk/Monitor-Asus.jpg"
     },
     {"id": 4,
     "nombre": "Monitor Curvo",
     "precio": 110000,
     "stock":2,
-    "imagen": "/images/MonitorCurvo.jpg"
+    "imagen": "https://i.ibb.co/JFgDM2Vw/Monitor-Curvo.jpg"
     },
     {"id": 5,
     "nombre": "Mouse",
     "precio": 25000,
     "stock":10,
-    "imagen": "/images/Mouse.jpg"
+    "imagen": "https://i.ibb.co/JW4GBSXP/Mouse.jpg"
     },
     {"id": 6,
     "nombre": "Notebook Pro",
     "precio": 1100000,
     "stock":5,
-    "imagen": "/images/NotebookPro.jpeg"
+    "imagen": "https://i.ibb.co/4wZYhNCh/Notebook-Pro.jpg"
     },
     {"id": 7,
     "nombre": "Teclado Mecánico",
     "precio": 11000,
     "stock":20,
-    "imagen": "/images/TecladoMecanico.jpg"
+    "imagen": "https://i.ibb.co/kgS3pJLY/Teclado-Mecanico.jpg"
     },
     {"id": 8,
     "nombre": "Windows 11",
     "precio": 10000,
     "stock":1,
-    "imagen": "/images/windows11.jpg"
+    "imagen": "https://i.ibb.co/zWDz3LW5/windows11.jpg"
     }
 ]

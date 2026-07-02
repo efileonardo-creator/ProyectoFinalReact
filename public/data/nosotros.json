@@ -4,25 +4,25 @@
     "nombre": "Carlos",
     "email": "carlos@empresa.com",
     "puesto": "Desarrollador",
-    "imagen": "/images/carlos.webp"
+    "imagen": "https://i.ibb.co/ZRvnLHZ5/luis.webp"
     },
     {
     "id": 2,
     "nombre": "Ana",
     "email": "ana@empresa.com",
     "puesto": "Diseñadora",
-    "imagen": "/images/ana.webp"
+    "imagen": "https://i.ibb.co/KpR77Y30/maria.webp"
     },
     {"id": 3,
     "nombre": "Luis",
     "email": "luis@empresa.com",
     "puesto": "Ventas",
-    "imagen": "/images/luis.webp"
+    "imagen": "https://i.ibb.co/xKZ17qsj/carlos.webp"
     },
     {"id": 4,
     "nombre": "María",
     "email": "maria@empresa.com",
     "puesto": "Recursos Humanos",
-    "imagen": "/images/maria.webp"
+    "imagen": "https://i.ibb.co/CKRD2H0X/ana.webp"
     }
 ]
