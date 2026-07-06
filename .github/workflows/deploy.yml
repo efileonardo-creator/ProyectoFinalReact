@@ -32,9 +32,6 @@ jobs:
           node-version: 24 # Versión estable de Node para compilar
           cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install
-
       - name: Build
         run: pnpm run build
 
