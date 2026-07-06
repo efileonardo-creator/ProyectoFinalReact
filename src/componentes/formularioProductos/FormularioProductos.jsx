@@ -23,6 +23,24 @@ return (
             onChange={manejarCambio} />
         </div>
         <div>
+            <label>Descripción:</label>
+            <input 
+            type="text" 
+            name="descripcion"
+            placeholder=" Breve descripción del producto" 
+            value={datosForm.descripcion} 
+            onChange={manejarCambio} />
+        </div>
+        <div>
+            <label>Categoría:</label>
+            <input 
+            type="text" 
+            name="categoria"
+            placeholder=" Ej: Tecnología" 
+            value={datosForm.categoria} 
+            onChange={manejarCambio} />
+        </div>
+        <div>
             <label>Precio:</label>
             <input 
             type="number" 
@@ -44,13 +62,13 @@ return (
             <label>Imagen:</label>
             <input 
             type="file" 
-            name="Imagen"
+            name="imagen"
             placeholder="https://api.imgbb.com/1/upload"
-            value={datosForm.urlImagen} 
+            value={datosForm.imagen} 
             onChange={manejarCambioImagen}
             />
         </div>
-        <button type="submit" className="bc p-2">Guardar Producto</button>
+        <button type="submit" className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Guardar Producto</button>
     </form>
     );
 }

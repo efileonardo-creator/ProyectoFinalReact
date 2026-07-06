@@ -7,6 +7,7 @@ import {Routes, Route} from 'react-router-dom';
 import {ContenedorListaPersona} from './componentes/staff/ContenedorListaPersona.jsx';
 import { DetalleProducto } from './componentes/detalleProducto/DetalleProducto.jsx';
 import ProductosNacionales from './componentes/productosNacionales/ProductosNacionales.jsx';  
+import ProductosNacionalesDetalle from './componentes/productosNacionales/ProductosNacionalesDetalle.jsx';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
                 <Route path='/Carrito' element={<Carrito/>} Mensaje={"Carrito de compras"}/>
                 <Route path='/AltaProducto' element={<FormularioContainer/>} Mensaje={"Alta de producto"}/>    
                 <Route path='/ProductosNacionales' element={<ProductosNacionales/>} Mensaje={"Productos Nacionales"}/>
+                <Route path='/ProductosNacionales/:id' element={<ProductosNacionalesDetalle/>} Mensaje={"Productos Nacionales"}/>
                 <Route path='/Contacto' element={<ContenedorListaPersona/>} Mensaje={"Alta de producto"}/>   
             </Route>
         </Routes>

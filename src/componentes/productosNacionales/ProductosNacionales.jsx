@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 // Importaciones clave de Firebase
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config.js';
+import { Link } from 'react-router-dom';
 
 const ProductosNacionales = () => {
     // Estado para guardar los productos que traigamos de la DB
@@ -34,6 +35,7 @@ const ProductosNacionales = () => {
                 <p>Categoría: {prod.categoria}</p>
                 <p>Precio: ${prod.precio}</p>
                 <p>Stock: {prod.stock} unidades</p>
+                <Link to={`/ProductosNacionales/${prod.id}`}>Ver detalle</Link>
                 <hr />
             </div>
             ))}

@@ -1,11 +1,16 @@
 import {useState} from 'react';
 import {FormularioProductos} from './FormularioProductos.jsx';
 
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+
 export function FormularioContainer() {
     const [datosForm, setDatosForm] = useState({
         nombre: '',
         precio: '',
-        stock: ''
+        stock: '',
+        categoria: '',
+        descripcion: '',
+        imagen: ''
     });
     const [imagenFile, setImagenFile] = useState(null);
     
@@ -43,9 +48,14 @@ export function FormularioContainer() {
             // Aca se puede procesar los datos según las necesidades.
                 const productoCompleto = {
                     ...datosForm,
-                    urlImagen: urlImagen
+                    imagen: urlImagen
                 };
                 console.log('Producto completo:', productoCompleto);
+            // Obtenemos la instancia de la base de datos
+                const db = getFirestore();     
+            // Apuntamos a la colección "productos" (si no existe, se crea)
+                const productosCollection = collection(db, "productos");
+                await addDoc(productosCollection, productoCompleto);
             } else {
                 throw new Error('Error al subir la imagen a Imgbb');
             }
@@ -54,7 +64,7 @@ export function FormularioContainer() {
             console.error('Error al subir la imagen:', error);
             alert('Error al subir la imagen. Por favor, intenta nuevamente.');
         }
-        
+
     };
 
     return (
