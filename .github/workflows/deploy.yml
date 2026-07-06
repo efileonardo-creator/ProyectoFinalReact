@@ -29,7 +29,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Versión estable de Node para compilar
+          node-version: 24 # Versión estable de Node para compilar
           cache: 'pnpm'
 
       - name: Install dependencies
