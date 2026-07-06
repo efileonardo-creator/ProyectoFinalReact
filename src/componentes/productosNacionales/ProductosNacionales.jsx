@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react';
 // Importaciones clave de Firebase
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import { db } from '../../firebase/config';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase/config.js';
 
 const ProductosNacionales = () => {
     // Estado para guardar los productos que traigamos de la DB
     const [productos, setProductos] = useState([]);
     useEffect(() => {
-        const productosDB = collection(db,"Productos nacionales")
+        const productosDB = collection(db,"productos")
 
-        getDocs(productosDB).then((resp) => {
-            setProductos(
-                resp.docs.map((doc) => {
-                    return{...doc.data(),id: doc.id}
-                })
-            );
-        })
+        getDocs(productosDB)
+            .then((resp) => {
+                console.log(resp.docs)
+                setProductos(
+                    resp.docs.map((doc) => {
+                        return{...doc.data(),id: doc.id}
+                    })
+            )})
+            .catch((error) => console.error("Error al traer datos de Firestore:", error));
     }, []); // El array vacío asegura que este efecto se ejecute solo una vez
     
     return (
