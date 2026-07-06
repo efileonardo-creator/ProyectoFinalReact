@@ -47,5 +47,7 @@ jobs:
           path: './dist'
 
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # Vite guarda todo en 'dist'
+          branch: gh-pages # La rama donde se subirá la web compilada
