@@ -8,6 +8,7 @@ import {ContenedorListaPersona} from './componentes/staff/ContenedorListaPersona
 import { DetalleProducto } from './componentes/detalleProducto/DetalleProducto.jsx';
 import ProductosNacionales from './componentes/productosNacionales/ProductosNacionales.jsx';  
 import ProductosNacionalesDetalle from './componentes/productosNacionales/ProductosNacionalesDetalle.jsx';
+import Login from './componentes/login/Login.jsx';
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
                 <Route path='/AltaProducto' element={<FormularioContainer/>} Mensaje={"Alta de producto"}/>    
                 <Route path='/ProductosNacionales' element={<ProductosNacionales/>} Mensaje={"Productos Nacionales"}/>
                 <Route path='/ProductosNacionales/:id' element={<ProductosNacionalesDetalle/>} Mensaje={"Productos Nacionales"}/>
-                <Route path='/Contacto' element={<ContenedorListaPersona/>} Mensaje={"Alta de producto"}/>   
+                <Route path='/Contacto' element={<ContenedorListaPersona/>} Mensaje={"Alta de producto"}/>
+                <Route path='/login' element={<Login/>} Mensaje={"Login"}/>   
             </Route>
         </Routes>
         );

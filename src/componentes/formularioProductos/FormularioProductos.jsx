@@ -1,17 +1,8 @@
 
 export function FormularioProductos({datosForm, manejarCambio, manejarEnvio, manejarCambioImagen}) {
-const formStyle = {
-display: 'flex',
-flexDirection: 'column',
-maxWidth: '24rem',
-margin: '3rem auto',
-padding: '1.5rem',
-border: '1px solid #ddd',
-borderRadius: '8px',
-gap: '16px'
-};
+
 return (
-    <form style={formStyle} onSubmit={manejarEnvio}>
+    <form className="flex flex-col gap-4 p-4" onSubmit={manejarEnvio}>
         <h3>Agregar Nuevo Producto</h3>
         <div>
             <label>Nombre del Producto:</label>

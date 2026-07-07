@@ -12,7 +12,7 @@ export function Navbar() {
                     <li><Link to="/">Inicio</Link></li>
                     <li><Link to="/Productos">Productos</Link></li>
                     <li><Link to="/Carrito">Carrito</Link></li>
-                    <li><Link to="/AltaProducto">Alta de producto</Link></li>
+                    <li><Link to="/AltaProducto">Dashboard</Link></li>
                     <li><Link to="/ProductosNacionales">Productos Nacionales</Link></li>
                     <li><Link to="/Contacto">Contacto</Link></li>
                 </ul>
@@ -26,7 +26,7 @@ export function Navbar() {
                             <li><Link to="/">Inicio</Link></li>
                             <li><Link to="/Productos">Productos</Link></li>
                             <li><Link to="/Carrito">Carrito</Link></li>
-                            <li><Link to="/AltaProducto">Alta de producto</Link></li>
+                            <li><Link to="/AltaProducto">Dashboard</Link></li>
                             <li><Link to="/ProductosNacionales">Productos Nacionales</Link></li>
                             <li><Link to="/Contacto">Contacto</Link></li>
                         </ul>

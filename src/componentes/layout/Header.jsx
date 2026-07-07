@@ -13,6 +13,7 @@ function Header() {
             <ul className="flex justify-center space-x-4 mt-4">
                 <li><Link to="/carrito">Carrito 🛒 {totalItems > 0 &&
                 <span>{totalItems}</span>}</Link></li>
+                <li><Link to="/login">Login</Link></li>
             </ul>
         </header>
     );
