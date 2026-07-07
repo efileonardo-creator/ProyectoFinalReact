@@ -1,5 +1,5 @@
 import  { createContext, useContext } from 'react';
-
+// 1. Crear el contexto
 export const AuthContext = createContext();
 // Hook personalizado
 export const useAuth = () => {

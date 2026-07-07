@@ -1,8 +1,7 @@
-import { AuthContext } from './AuthHooks.jsx';
 import  { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-// 1. Crear el contexto
+import { AuthContext } from '../componentes/hooks/AuthHooks.jsx';
 
 // 2. Crear el proveedor del contexto
 export const AuthProvider = ({ children }) => {
