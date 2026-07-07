@@ -2,10 +2,10 @@
   "name": "entregafinal",
   "private": true,
   "homepage": "https://efileonardo-creator.github.io/ProyectoFinalReact",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
