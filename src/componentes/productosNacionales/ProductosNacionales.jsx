@@ -4,9 +4,16 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config.js';
 import { Link } from 'react-router-dom';
 
+
+
 const ProductosNacionales = () => {
     // Estado para guardar los productos que traigamos de la DB
     const [productos, setProductos] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+// 2. Filtramos la lista de productos ANTES de renderizarla
+const productosFiltrados = productos.filter(prod =>
+    prod.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+);
     useEffect(() => {
         const productosDB = collection(db,"productos")
 
@@ -25,10 +32,17 @@ const ProductosNacionales = () => {
     
     <div>
         <h1>Productos Nacionales</h1>
+        
+        <div>
+            <input type="text" className="form-control" 
+                placeholder="Buscar productos por nombre..."
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+        </div>  
         <div className="lista-productos">
             {/* 5. Mapeamos el estado `productos` para renderizar cada
             uno */}
-            {productos.map(prod => (
+            {productosFiltrados.map(prod => (
             <div key={prod.id} >
                 <img src={prod.imagen} alt={prod.nombre} style={{width: '100px' }} />
                 <h3>{prod.nombre}</h3>
