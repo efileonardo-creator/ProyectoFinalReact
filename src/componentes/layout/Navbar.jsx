@@ -23,10 +23,9 @@ export function Navbar() {
                 >
                         <ul className="flex flex-col gap-2 absolute top-16 left-4 bg-blue-600 p-4 rounded">
                             <li><Link to="/">Inicio</Link></li>
-                            <li><Link to="/Productos">Productos</Link></li>
                             <li><Link to="/Carrito">Carrito</Link></li>
                             <li><Link to="/AltaProducto">Dashboard</Link></li>
-                            <li><Link to="/ProductosNacionales">Productos Nacionales</Link></li>
+                            <li><Link to="/ProductosNacionales">Productos</Link></li>
                             <li><Link to="/Contacto">Contacto</Link></li>
                         </ul>
                 </button>
