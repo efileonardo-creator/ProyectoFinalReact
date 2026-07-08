@@ -89,7 +89,7 @@ const ProductosNacionales = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>  
-            <div className="lista-productos">
+            <div className="flex flex-wrap justify-content-center align-baseline gap-4">
                 {/* 5. Mapeamos el estado `productos` para renderizar cada
                 uno */}
                 {productosFiltrados.map(prod => (
