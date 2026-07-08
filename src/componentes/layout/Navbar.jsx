@@ -10,10 +10,9 @@ export function Navbar() {
                 {/* Menú escritorio */}
                 <ul className="hidden md:flex gap-6">
                     <li><Link to="/">Inicio</Link></li>
-                    <li><Link to="/Productos">Productos</Link></li>
                     <li><Link to="/Carrito">Carrito</Link></li>
                     <li><Link to="/AltaProducto">Dashboard</Link></li>
-                    <li><Link to="/ProductosNacionales">Productos Nacionales</Link></li>
+                    <li><Link to="/ProductosNacionales">Productos</Link></li>
                     <li><Link to="/Contacto">Contacto</Link></li>
                 </ul>
 
