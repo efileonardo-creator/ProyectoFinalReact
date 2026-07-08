@@ -23,8 +23,12 @@ function Header() {
                 <button onClick={logout}>Cerrar Sesión</button>
                 </>
                 ) : (
-                <li><Link to="/login">Login</Link></li>
+                    <ul>
+                        <li><Link to="/login">Login</Link></li> 
+                        <li><Link to="/registro">Registro</Link></li>
+                    </ul>
                 )}
+
             </ul>
         </header>
     );
