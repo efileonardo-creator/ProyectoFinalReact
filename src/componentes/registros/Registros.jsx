@@ -41,13 +41,13 @@ const Registro = () => {
 return (
     <div className="auth-container">
     <h2>Crear una nueva cuenta</h2>
-    <form onSubmit={handleSubmit}>
-        <div className="form-group">
+    <form className="padding 2x bg-gray-300" onSubmit={handleSubmit}>
+        <div className="padding 2x">
             <label>Correo Electrónico</label>
             <input
             type="email"
             value={email}
-
+            placeholder="Ingrese su correo electrónico"
             onChange={(e) => setEmail(e.target.value)}
             required
             />

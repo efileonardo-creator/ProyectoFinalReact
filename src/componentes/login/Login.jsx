@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
     const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -44,7 +45,10 @@ return (
             />
             <button type="submit">Ingresar</button>
         </form>
+        {/*por si el usuario no tiene cuenta, lo redirigimos a la página de registro*/}
+        <p>¿No tenés una cuenta? <Link to="/registro" className="text-blue-500 hover:underline">Registrate aquí</Link></p>
     </div>
     );
-};
+}
+
 export default Login;
