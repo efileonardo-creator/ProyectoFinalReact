@@ -10,13 +10,7 @@ function Header() {
     return (
         <header className="header bg-gray-800 text-white p-4 w-full text-center">
             <h1>Bienvenidos a Mi tienda online</h1>
-            <div className="flex flex-col align-middle justify-between">
-                <div className="">
-                    <div className="flex justify-center space-x-4 mt-4">
-                        <Link to="/carrito">Carrito 🛒 {totalItems > 0 &&
-                        <span>{totalItems}</span>}</Link>
-                    </div>
-                </div>
+            <div className="grid grid-cols-2 align-middle justify-between">
                 <div>
                     {/* Lógica de renderizado condicional */}
                         {user ? (
@@ -24,18 +18,26 @@ function Header() {
                         {user.rol === 'admin' && (
                         <Link to="/alta" style={{ color: 'black'}}>Gestion</Link>)}
                         <span>¡Hola, {user.email}!</span>
-                        <button onClick={logout}>Cerrar Sesión</button>
+                        <button className="hover:bg-blue-100 text-amber-600 rounded-xl p-2" onClick={logout}>Cerrar Sesión</button>
                         </>
                         ) : (
                             <>
-                                <div>
-                                    <Link to="/login">Login</Link>
-                                </div>
-                                <div>   
-                                    <Link to="/registro">Registro</Link>
+                                <div className="flex flex-cols gap-5 py-4" >
+                                    <div>
+                                        <Link to="/login">Login</Link>
+                                    </div>
+                                    <div>   
+                                        <Link to="/registro">Registro</Link>
+                                    </div>
                                 </div>
                             </>
                         )}
+                </div>
+                <div className="flex justify-end align-middle">
+                    <div className="flex justify-center space-x-4 mt-4 rounded-xl p-1 hover:bg-blue-100 hover:text-blue-950">
+                        <Link to="/carrito">Carrito 🛒 {totalItems > 0 &&
+                        <span>{totalItems}</span>}</Link>
+                    </div>
                 </div>
             </div>
         </header>
