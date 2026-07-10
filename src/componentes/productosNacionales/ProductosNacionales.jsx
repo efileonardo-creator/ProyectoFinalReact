@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config.js';
 import { Link } from 'react-router-dom';
+import { useCart } from '../hooks/CarritoHook.jsx';
 
 
 
@@ -10,6 +11,7 @@ const ProductosNacionales = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [cargando, setCargando] = useState(true);
     const [paginaActual, setPaginaActual] = useState(1);
+    const { agregarAlCarrito, isInCart } = useCart();
     const PRODUCTOS_POR_PAGINA = 4;
 
     useEffect(() => {
@@ -97,10 +99,17 @@ const ProductosNacionales = () => {
                                         <p className="mt-1 text-sm text-slate-500">Stock: {prod.stock} unidades</p>
                                         <div className="mt-4 flex items-center justify-between">
                                             <span className="text-xl font-bold text-blue-600">${prod.precio}</span>
-                                            <Link to={`/ProductosNacionales/${prod.id}`} className="rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
-                                                Ver detalle
-                                            </Link>
+                                            <button
+                                                type="button"
+                                                onClick={() => agregarAlCarrito(prod, 1)}
+                                                className="rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                                            >
+                                                {isInCart(prod.id) ? 'Agregado' : 'Agregar al carrito'}
+                                            </button>
                                         </div>
+                                        <Link to={`/ProductosNacionales/${prod.id}`} className="mt-3 inline-block text-sm font-medium text-blue-600 hover:underline">
+                                            Ver detalle
+                                        </Link>
                                     </div>
                                 </div>
                             ))}
