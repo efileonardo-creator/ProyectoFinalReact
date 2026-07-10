@@ -17,8 +17,11 @@ importers:
       firebase-admin:
         specifier: ^14.1.0
         version: 14.1.0
+      icons:
+        specifier: ^1.0.0
+        version: 1.0.0
       react:
-        specifier: ^19.2.6
+        specifier: ^19.2.7
         version: 19.2.7
       react-dom:
         specifier: ^19.2.6
@@ -1327,6 +1330,10 @@ packages:
   https-proxy-agent@7.0.6:
     resolution: {integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==}
     engines: {node: '>= 14'}
+
+  icons@1.0.0:
+    resolution: {integrity: sha512-7POum3AHKovjEEXg4ITL2opTzGjnN2UnUIhv5LsUX+SjKBsFMjRyANShrCubt0KQdNdcX2wAym+JXOt6LceuYA==}
+    deprecated: Package no longer supported. Contact support@npmjs.com for more info.
 
   idb@7.1.1:
     resolution: {integrity: sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==}
@@ -3586,6 +3593,8 @@ snapshots:
       debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
+
+  icons@1.0.0: {}
 
   idb@7.1.1: {}
 

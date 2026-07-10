@@ -10,26 +10,28 @@ function Header() {
     return (
         <header className="header bg-gray-800 text-white p-4 w-full text-center">
             <h1>Bienvenidos a Mi tienda online</h1>
-            <ul className="flex justify-center space-x-4 mt-4">
-                <li><Link to="/carrito">Carrito 🛒 {totalItems > 0 &&
-                <span>{totalItems}</span>}</Link></li>
-            </ul>
-            <ul>{/* Lógica de renderizado condicional */}
-                {user ? (
-                <>{/* Mostrar Gestion SOLO si el usuario es admin */}
-                {user.rol === 'admin' && (
-                <li><Link to="/alta" style={{ color: 'black'}}>Gestion</Link></li>)}
-                <span>¡Hola, {user.email}!</span>
-                <button onClick={logout}>Cerrar Sesión</button>
-                </>
-                ) : (
-                    <ul>
-                        <li><Link to="/login">Login</Link></li> 
-                        <li><Link to="/registro">Registro</Link></li>
-                    </ul>
-                )}
+            <div className="flex flex-row">
+                <ul className="flex justify-center space-x-4 mt-4">
+                    <li><Link to="/carrito">Carrito 🛒 {totalItems > 0 &&
+                    <span>{totalItems}</span>}</Link></li>
+                </ul>
+                <ul>{/* Lógica de renderizado condicional */}
+                    {user ? (
+                    <>{/* Mostrar Gestion SOLO si el usuario es admin */}
+                    {user.rol === 'admin' && (
+                    <li><Link to="/alta" style={{ color: 'black'}}>Gestion</Link></li>)}
+                    <span>¡Hola, {user.email}!</span>
+                    <button onClick={logout}>Cerrar Sesión</button>
+                    </>
+                    ) : (
+                        <ul>
+                            <li><Link to="/login">Login</Link></li> 
+                            <li><Link to="/registro">Registro</Link></li>
+                        </ul>
+                    )}
 
-            </ul>
+                </ul>
+                </div>
         </header>
     );
 }

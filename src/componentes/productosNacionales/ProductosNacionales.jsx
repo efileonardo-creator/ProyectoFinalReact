@@ -1,128 +1,152 @@
-import { useState, useEffect } from 'react';
-// Importaciones clave de Firebase
-import { collection, getDocs, query, limit, startAfter } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config.js';
 import { Link } from 'react-router-dom';
 
 
 
 const ProductosNacionales = () => {
-    // Estado para guardar los productos que traigamos de la DB
     const [productos, setProductos] = useState([]);
-    // Elementos para la paginación y búsqueda
     const [searchTerm, setSearchTerm] = useState('');
     const [cargando, setCargando] = useState(true);
-    const [cargandoMas, setCargandoMas] = useState(false);
-    const [ultimoVisible, setUltimoVisible] = useState(null);
-    const [hayMas, setHayMas] = useState(true);
-    const PRODUCTOS_POR_PAGINA = 2;
+    const [paginaActual, setPaginaActual] = useState(1);
+    const PRODUCTOS_POR_PAGINA = 4;
 
-    const obtenerProductosIniciales = () => {
-        setCargando(true);
-        const productosDB = collection(db, "productos");
-        const q = query(productosDB, limit(PRODUCTOS_POR_PAGINA));
-        getDocs(q).then((resp) => {
-        const productosData = resp.docs.map((doc) => ({ ...doc.data(), id:doc.id }));
+    useEffect(() => {
+        const cargarProductos = async () => {
+            setCargando(true);
+            try {
+                const productosRef = collection(db, 'productos');
+                const snapshot = await getDocs(productosRef);
+                const productosData = snapshot.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id,
+                }));
+                setProductos(productosData);
+            } catch (error) {
+                console.error('Error al traer datos de Firestore:', error);
+            } finally {
+                setCargando(false);
+            }
+        };
 
-        setProductos(productosData);
-        const ultimoDoc = resp.docs[resp.docs.length - 1];
-        setUltimoVisible(ultimoDoc);
-        setHayMas(resp.docs.length === PRODUCTOS_POR_PAGINA);
-        })
-        .catch(error => console.error("Error al obtener productos: ", error))
-        .finally(() => setCargando(false));
-    };
-    // Funcion para cargar la siguiente pagina
-    const obtenerMasProductos = () => {
-        if (!hayMas || cargandoMas) return;
-        setCargandoMas(true);
-        const productosDB = collection(db, "productos");
-        const q = query(productosDB, startAfter(ultimoVisible),
-        limit(PRODUCTOS_POR_PAGINA));
-        getDocs(q).then((resp) => {
-            const productosData = resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        cargarProductos();
+    }, []);
 
-            setProductos(productosAnteriores => [...productosAnteriores, ...productosData]);
+    useEffect(() => {
+        setPaginaActual(1);
+    }, [searchTerm]);
 
-            const ultimoDoc = resp.docs[resp.docs.length - 1];
-            setUltimoVisible(ultimoDoc);
-            setHayMas(resp.docs.length === PRODUCTOS_POR_PAGINA);
-            })
-            .catch(error => console.error("Error al cargar mas productos: ", error))
-            .finally(() => setCargandoMas(false));
-    };
+    const productosFiltrados = productos.filter((prod) => {
+        const nombre = prod.nombre ?? '';
+        return nombre.toLowerCase().includes(searchTerm.toLowerCase());
+    });
 
-    const verMenos = () => {
-        obtenerProductosIniciales();
-        // Opcional: Desplazar la vista hacia arriba
-        window.scrollTo(0, 0);
-    }
+    const totalPaginas = Math.max(1, Math.ceil(productosFiltrados.length / PRODUCTOS_POR_PAGINA));
+    const indiceInicial = (paginaActual - 1) * PRODUCTOS_POR_PAGINA;
+    const productosPaginados = productosFiltrados.slice(indiceInicial, indiceInicial + PRODUCTOS_POR_PAGINA);
 
+    useEffect(() => {
+        if (paginaActual > totalPaginas) {
+            setPaginaActual(1);
+        }
+    }, [paginaActual, totalPaginas]);
 
+    const spinnerSrc = `data:image/svg+xml;utf8,${encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#2563eb" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="62.8" />
+        </svg>
+    `)}`;
 
-        // 2. Filtramos la lista de productos ANTES de renderizarla
-    const productosFiltrados = productos.filter(prod =>
-        prod.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-        useEffect(() => {
-            const productosDB = collection(db,"productos")
-
-            getDocs(productosDB)
-                .then((resp) => {
-                    console.log(resp.docs)
-                    setProductos(
-                        resp.docs.map((doc) => {
-                            return{...doc.data(),id: doc.id}
-                        })
-                )})
-                .catch((error) => console.error("Error al traer datos de Firestore:", error));
-        }, []); // El array vacío asegura que este efecto se ejecute solo una vez
-        
-        return (
-        
-        <div>
-            <h1>Productos Nacionales</h1>
-            
-            <div>
-                <input type="text" className="form-control" 
-                    placeholder="Buscar productos por nombre..."
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-            </div>  
-            <div className="flex flex-wrap justify-content-center align-baseline gap-4">
-                {/* 5. Mapeamos el estado `productos` para renderizar cada
-                uno */}
-                {productosFiltrados.map(prod => (
-                <div key={prod.id} >
-                    <img src={prod.imagen} alt={prod.nombre} style={{width: '100px' }} />
-                    <h3>{prod.nombre}</h3>
-                    <p>Categoría: {prod.categoria}</p>
-                    <p>Precio: ${prod.precio}</p>
-                    <p>Stock: {prod.stock} unidades</p>
-                    <Link to={`/ProductosNacionales/${prod.id}`}>Ver detalle</Link>
-                    <hr />
+    return (
+        <div className="min-h-screen bg-slate-50 px-4 py-8">
+            <div className="mx-auto max-w-7xl">
+                <div className="mb-8 text-center">
+                    <h1 className="text-3xl font-bold text-slate-800">Productos Nacionales</h1>
+                    <p className="mt-2 text-slate-600">Descubrí los productos disponibles en nuestra tienda.</p>
                 </div>
-                ))}
-            </div>
-            <div>
-                {/* El boton "Ver menos" solo aparece si hay mas de una pagina cargada */}
-                {productos.length > PRODUCTOS_POR_PAGINA && (
-                <button onClick={verMenos}>
-                    Ver menos
-                </button>)}
-                {/* Boton "Cargar mas" */}
-                {hayMas ? (
-                <button onClick={obtenerMasProductos} disabled={cargandoMas}>
-                    Cargar mas
-                </button>
-                ) : (
-                // No mostramos el alert si solo hay una pagina de resultados
-                    productos.length > PRODUCTOS_POR_PAGINA && 
-                    <p>No hay mas productos para mostrar.</p>
-                )}
 
+                <div className="mb-8 flex justify-center">
+                    <input
+                        type="text"
+                        className="w-full max-w-xl rounded-full border border-slate-300 bg-white px-4 py-3 shadow-sm outline-none ring-0 focus:border-blue-500"
+                        placeholder="Buscar productos por nombre..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
+
+                {cargando ? (
+                    <div className="flex flex-col items-center justify-center py-16">
+                        <img
+                            src={spinnerSrc}
+                            alt="Cargando productos"
+                            className="h-16 w-16 animate-spin"
+                        />
+                        <p className="mt-3 text-slate-600">Cargando productos...</p>
+                    </div>
+                ) : productosFiltrados.length > 0 ? (
+                    <>
+                        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+                            {productosPaginados.map((prod) => (
+                                <div key={prod.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
+                                    <img src={prod.imagen} alt={prod.nombre} className="h-48 w-full object-cover" />
+                                    <div className="p-5">
+                                        <h3 className="text-lg font-semibold text-slate-800">{prod.nombre}</h3>
+                                        <p className="mt-2 text-sm text-slate-500">Categoría: {prod.categoria}</p>
+                                        <p className="mt-1 text-sm text-slate-500">Stock: {prod.stock} unidades</p>
+                                        <div className="mt-4 flex items-center justify-between">
+                                            <span className="text-xl font-bold text-blue-600">${prod.precio}</span>
+                                            <Link to={`/ProductosNacionales/${prod.id}`} className="rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
+                                                Ver detalle
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {totalPaginas > 1 && (
+                            <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+                                <button
+                                    type="button"
+                                    onClick={() => setPaginaActual((prev) => Math.max(1, prev - 1))}
+                                    className="rounded-full border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
+                                >
+                                    Anterior
+                                </button>
+
+                                {Array.from({ length: totalPaginas }, (_, index) => {
+                                    const pagina = index + 1;
+                                    return (
+                                        <button
+                                            key={pagina}
+                                            type="button"
+                                            onClick={() => setPaginaActual(pagina)}
+                                            className={`rounded-full px-3 py-2 text-sm font-medium ${pagina === paginaActual ? 'bg-blue-600 text-white' : 'border border-slate-300 bg-white text-slate-700 hover:bg-slate-100'}`}
+                                        >
+                                            {pagina}
+                                        </button>
+                                    );
+                                })}
+
+                                <button
+                                    type="button"
+                                    onClick={() => setPaginaActual((prev) => Math.min(totalPaginas, prev + 1))}
+                                    className="rounded-full border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
+                                >
+                                    Siguiente
+                                </button>
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-slate-600">
+                        No se encontraron productos con ese nombre.
+                    </div>
+                )}
             </div>
         </div>
-        );
+    );
 };
 export default ProductosNacionales;
