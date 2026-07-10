@@ -19,15 +19,15 @@ export function Navbar() {
 
     return (
         <nav className="bg-blue-600 text-white shadow-md">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 gap-4">
                 <Link to="/" className="text-xl font-semibold" onClick={closeMenu}>
                     MiTiendita
                 </Link>
 
-                <ul className="hidden items-center gap-6 md:flex">
+                <ul className="hidden items-center gap-6 md:flex ">
                     {links.map((link) => (
                         <li key={link.to}>
-                            <Link to={link.to} className="transition hover:text-blue-200">
+                            <Link to={link.to} className="transition hover:rounded-full hover:text-black hover:bg-blue-300 px-4 py-3">
                                 {link.label}
                             </Link>
                         </li>

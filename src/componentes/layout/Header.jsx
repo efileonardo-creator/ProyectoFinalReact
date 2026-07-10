@@ -10,28 +10,34 @@ function Header() {
     return (
         <header className="header bg-gray-800 text-white p-4 w-full text-center">
             <h1>Bienvenidos a Mi tienda online</h1>
-            <div className="flex flex-row">
-                <ul className="flex justify-center space-x-4 mt-4">
-                    <li><Link to="/carrito">Carrito 🛒 {totalItems > 0 &&
-                    <span>{totalItems}</span>}</Link></li>
-                </ul>
-                <ul>{/* Lógica de renderizado condicional */}
-                    {user ? (
-                    <>{/* Mostrar Gestion SOLO si el usuario es admin */}
-                    {user.rol === 'admin' && (
-                    <li><Link to="/alta" style={{ color: 'black'}}>Gestion</Link></li>)}
-                    <span>¡Hola, {user.email}!</span>
-                    <button onClick={logout}>Cerrar Sesión</button>
-                    </>
-                    ) : (
-                        <ul>
-                            <li><Link to="/login">Login</Link></li> 
-                            <li><Link to="/registro">Registro</Link></li>
-                        </ul>
-                    )}
-
-                </ul>
+            <div className="flex flex-col align-middle justify-between">
+                <div className="">
+                    <div className="flex justify-center space-x-4 mt-4">
+                        <Link to="/carrito">Carrito 🛒 {totalItems > 0 &&
+                        <span>{totalItems}</span>}</Link>
+                    </div>
                 </div>
+                <div>
+                    {/* Lógica de renderizado condicional */}
+                        {user ? (
+                        <>{/* Mostrar Gestion SOLO si el usuario es admin */}
+                        {user.rol === 'admin' && (
+                        <Link to="/alta" style={{ color: 'black'}}>Gestion</Link>)}
+                        <span>¡Hola, {user.email}!</span>
+                        <button onClick={logout}>Cerrar Sesión</button>
+                        </>
+                        ) : (
+                            <>
+                                <div>
+                                    <Link to="/login">Login</Link>
+                                </div>
+                                <div>   
+                                    <Link to="/registro">Registro</Link>
+                                </div>
+                            </>
+                        )}
+                </div>
+            </div>
         </header>
     );
 }
