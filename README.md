@@ -17,7 +17,7 @@ Enlace al repositorio de GitHub (verifiquen que sea público):
 Enlace del sitio en producción (deploy):
 Comparti:
 Usuario admin: admin@gmail.com 
-Clave admin: 1234
+Clave admin: Admin1234
 
 Antes de enviar la entrega, asegúrense de que ambos enlaces funcionen correctamente y sean accesibles.
 

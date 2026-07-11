@@ -18,7 +18,7 @@ export function Navbar() {
     const closeMenu = () => setMenuOpen(false);
 
     return (
-        <nav className="bg-blue-600 text-white shadow-md">
+        <nav className="w-full bg-blue-600 text-white shadow-md  ">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 gap-4">
                 <Link to="/" className="text-xl font-semibold" onClick={closeMenu}>
                     MiTiendita

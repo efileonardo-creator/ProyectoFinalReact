@@ -24,10 +24,10 @@ import { Link } from 'react-router-dom';
         });
     };
 return (
-    <div>
-        <h2>Iniciar Sesión</h2>
+    <div  className='justify-center w-1/2 text-lime-700 bg-blue-200 mx-6 my-6 px-6 py-6 ' >
+        <h2 className='flex justify-center align-middle py-4 pb-6'>Iniciar Sesión</h2>
         <form onSubmit={handleLogin}>
-            <input className= "invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline focus:outline-sky-500 focus:invalid:border-pink-500 focus:invalid:outline-pink-500 disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none dark:disabled:border-gray-700 dark:disabled:bg-gray-800/20"
+            <input className= "border-2 border-solid px-4 py-1 my-4 mb-6 invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline focus:outline-sky-500 focus:invalid:border-pink-500 focus:invalid:outline-pink-500 disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none dark:disabled:border-gray-700 dark:disabled:bg-gray-800/20"
             type="email"
 
             placeholder="Correo electrónico"
@@ -35,7 +35,7 @@ return (
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             />
-            <input 
+            <input className= "border-2 border-solid px-4 py-1 my-4 mb-6"
             type="password"
 
             placeholder="Contraseña"
@@ -43,10 +43,12 @@ return (
 
             onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Ingresar</button>
+            <div className='flex justify-end align-middle  mb-6 pr-6'>
+                <button type="submit" className='rounded-md hover:cursor-pointer hover:bg-amber-200 bg-amber-100 border-r border-2 border-solid px-4 py-1 r'>Ingresar</button>
+            </div>
         </form>
         {/*por si el usuario no tiene cuenta, lo redirigimos a la página de registro*/}
-        <p>¿No tenés una cuenta? <Link to="/registro" className="text-blue-500 hover:underline">Registrate aquí</Link></p>
+        <p>¿No tenés una cuenta? <Link to="/registro" className="hover:cursor-pointer text-blue-500 hover:underline">Registrate aquí</Link></p>
     </div>
     );
 }
