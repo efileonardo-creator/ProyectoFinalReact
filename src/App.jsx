@@ -10,6 +10,7 @@ import Registro from './componentes/registros/Registros.jsx';
 import RutaProtegidas from './componentes/rutasProtegidas/RutasProtegidas.jsx';
 import Gestion from './componentes/gestion/Gestion.jsx';
 import { SearchProvider } from './context/SearchContext.jsx';
+import { Inicio } from './componentes/inicio/Inicio.jsx';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
         <SearchProvider>
             <Routes>
                 <Route element={<Layout/>}>
-                    <Route path='/' element="Inicio" Mensaje={"Inicio"}/>
+                    <Route path='/' element={<Inicio/>} Mensaje={"Inicio"}/>
                     <Route path='/Carrito' element={<Carrito/>} Mensaje={"Carrito de compras"}/>
                     
                     <Route path='/AltaProducto' element={

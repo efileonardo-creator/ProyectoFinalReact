@@ -35,7 +35,7 @@ return (
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             />
-            <input className= "border-2 border-solid px-4 py-1 my-4 mb-6"
+            <input className= "w-20% border-2 border-solid px-4 py-1 my-4 mb-6"
             type="password"
 
             placeholder="Contraseña"
