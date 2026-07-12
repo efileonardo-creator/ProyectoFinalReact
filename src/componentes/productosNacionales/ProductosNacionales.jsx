@@ -64,7 +64,7 @@ const ProductosNacionales = () => {
         <div className="min-h-screen bg-slate-50 px-4 py-8">
             <div className="mx-auto max-w-7xl">
                 <div className="mb-8 text-center">
-                    <h1 className="text-3xl font-bold text-slate-800">Productos Nacionales</h1>
+                    <h1 className="text-3xl font-bold text-slate-800">Productos</h1>
                     <p className="mt-2 text-slate-600">Descubrí los productos disponibles en nuestra tienda.</p>
                 </div>
 

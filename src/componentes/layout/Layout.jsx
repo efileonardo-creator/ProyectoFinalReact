@@ -1,15 +1,17 @@
 import Header from './Header.jsx';
 import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
-import {Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 export function Layout({ children }) {
     return (
-        <div className="flex flex-col items-center bg-gray-100 min-h-screen">
+        <div className="flex min-h-screen flex-col bg-gray-100">
             <Header />
             <Navbar />
-            {children}
-            <Outlet />
+            <main className="flex-1 w-full">
+                {children}
+                <Outlet />
+            </main>
             <Footer />
         </div>
     );
