@@ -1,8 +1,16 @@
 import { useState } from 'react';
 import { CartContext } from '../componentes/hooks/CarritoHook';
+import Mensaje from '../componentes/mensaje/Mensaje.jsx';
 
 export const CartProvider = ({ children }) => {
     const [carrito, setCarrito] = useState([]);
+    const [modalInfo, setModalInfo] = useState({
+        abierto: false,
+        mensaje: '',
+        titulo: 'Aviso',
+        onConfirm: null,
+        onCancel: null
+    });
 
     const agregarAlCarrito = (producto, cantidad = 1) => {
         const stockDisponible = Number(producto?.stock ?? 0);
@@ -57,8 +65,21 @@ export const CartProvider = ({ children }) => {
         );
     };
 
+    const cerrarMensaje = () => {
+        setModalInfo((prev) => ({ ...prev, abierto: false }));
+    };
+
     const removeItem = (productId) => {
-        setCarrito((prevCart) => prevCart.filter((item) => item.id !== productId));
+        setModalInfo({
+            abierto: true,
+            titulo: 'Confirmar eliminación',
+            mensaje: '¿Desea eliminar este producto del carrito?',
+            onConfirm: () => {
+                setCarrito((prevCart) => prevCart.filter((item) => item.id !== productId));
+                cerrarMensaje();
+            },
+            onCancel: () => cerrarMensaje()
+        });
     };
 
     const isInCart = (productId) => {
@@ -96,6 +117,13 @@ export const CartProvider = ({ children }) => {
             getCartTotal
         }}>
             {children}
+            <Mensaje
+                abierto={modalInfo.abierto}
+                mensaje={modalInfo.mensaje}
+                titulo={modalInfo.titulo}
+                onConfirm={modalInfo.onConfirm}
+                onCancel={modalInfo.onCancel}
+            />
         </CartContext.Provider>
     );
 };

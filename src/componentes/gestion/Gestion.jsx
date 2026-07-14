@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { db } from '../../firebase/config.js';
 import { FormularioContainer } from '../formularioProductos/FormularioContainer.jsx';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { Alerta } from '../componentes/mensaje/Alerta.jsx';  
 
 const Gestion = () => {
     const [productos, setProductos] = useState([]);
@@ -16,6 +17,7 @@ const Gestion = () => {
             setProductos(resp.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         } catch (error) {
             console.error('Error al cargar productos:', error);
+            Alerta ("Error al cargar el producto.")
         } finally {
             setCargando(false);
         }
@@ -27,16 +29,16 @@ const Gestion = () => {
 
     const handleDelete = async (id) => {
         const confirmacion = window.confirm('¿Está seguro de que desea eliminar este producto?');
-        if (!confirmacion) return;
+        if (!confirmacion) 
+            return;
 
         try {
             const docRef = doc(db, 'productos', id);
             await deleteDoc(docRef);
             await cargarProductos();
-            alert('Producto eliminado.');
         } catch (error) {
             console.error('Error al eliminar producto:', error);
-            alert('Ocurrió un error al eliminar el producto.');
+            Alerta ('Ocurrió un error al eliminar el producto.');
         }
     };
 
@@ -77,7 +79,7 @@ const Gestion = () => {
                                                 <button type="button" onClick={() => setProductoEditando(prod)} className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-700">
                                                     Editar
                                                 </button>
-                                                <button type="button" onClick={() => handleDelete(prod.id)} className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white hover:bg-red-700">
+                                                <button type="button" onClick={() => handleDelete(prod.id)}  className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white hover:bg-red-700">
                                                     Eliminar
                                                 </button>
                                             </div>
