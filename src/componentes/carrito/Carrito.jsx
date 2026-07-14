@@ -27,11 +27,13 @@ const Carrito = () => {
                     {carrito.map((item) => (
                         <div key={item.id} className="flex flex-col gap-4 rounded-2xl border border-slate-200 p-4 md:flex-row md:items-center md:justify-between">
                             <div>
+                                <img src={item.imagen} alt={item.nombre} style={{ maxWidth:'200px' }} ></img>
+                            </div>
+                            <div>
                                 <h4 className="text-lg font-semibold text-slate-800">{item.nombre}</h4>
                                 <p className="text-sm text-slate-500">Precio unitario: ${item.precio}</p>
                                 <p className="text-sm text-slate-500">Subtotal: ${item.precio * item.cantidad}</p>
                             </div>
-
                             <div className="flex flex-wrap items-center gap-3">
                                 <div className="flex items-center rounded-full border border-slate-300">
                                     <button type="button" onClick={() => disminuirCantidad(item.id)} className="px-3 py-2 text-lg font-semibold text-slate-700">−</button>
