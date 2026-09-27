@@ -10,7 +10,7 @@ Tienda online con catálogo de productos, carrito de compras, registro e inicio 
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white)
 
-🔗 **Demo en vivo:** _[agregar enlace del deploy]_
+🔗 **Demo en vivo:** (https://proyecto-final-react-git-main-leonardo26.vercel.app/)
 
 ---
 
